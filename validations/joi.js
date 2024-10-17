@@ -62,4 +62,5 @@ const createAnsSchema = Joi.object({
     "answer" : Joi.string().required(),
     "questionId" : Joi.number().required()
 })
+
 module.exports = {courseSchema, studentSchema, addressSchema, idSchema, courseIdSchema, studentaddressSchema, questionIdSchema,createQuesSchema, createAnsSchema, updateQuesSchema}

@@ -23,7 +23,20 @@ module.exports = (sequelize, DataTypes) => {
     questionId : DataTypes.INTEGER,
     rollNo : DataTypes.INTEGER,
     answer: DataTypes.STRING,
-  }, {
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    deletedAt: {
+      type: DataTypes.DATE
+    },
+  },
+  
+   {
     sequelize,
     paranoid : true,
     timestamps : true,

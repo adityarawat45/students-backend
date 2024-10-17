@@ -31,7 +31,18 @@ module.exports = (sequelize, DataTypes) => {
     semesters : {
       type : DataTypes.INTEGER,
       allowNull : false
-    }
+    },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    deletedAt: {
+      type: DataTypes.DATE
+    },
   }, {
     sequelize,
     modelName: 'Course',

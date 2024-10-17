@@ -21,7 +21,18 @@ module.exports = (sequelize, DataTypes) => {
       autoIncrement : true
     },
     rollNo : DataTypes.INTEGER,
-    question: DataTypes.STRING
+    question: DataTypes.STRING,
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    deletedAt: {
+      type: DataTypes.DATE
+    },
   }, {
     sequelize,
     timestamps : true,

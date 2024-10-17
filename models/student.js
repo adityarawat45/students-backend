@@ -42,7 +42,18 @@ module.exports = (sequelize, DataTypes) => {
     addressId : {
       type : DataTypes.INTEGER,
       unique : true
-    }
+    },
+    createdAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    updatedAt: {
+      allowNull: false,
+      type: DataTypes.DATE
+    },
+    deletedAt: {
+      type: DataTypes.DATE
+    },
   },
    {
     sequelize,
