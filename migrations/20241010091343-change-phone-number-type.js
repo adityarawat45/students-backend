@@ -1,23 +1,30 @@
 'use strict';
-
+const sequelize = require("../models")
 module.exports = {
   up: async (queryInterface, Sequelize) => {
-    await queryInterface.addColumn('Students', 'phone_number_int', {
-      type: Sequelize.BIGINT,
-      allowNull: true,
-    });
-
-    await queryInterface.sequelize.query(`
-      UPDATE Students
-      SET phone_number_int = CASE
-        WHEN phoneNo REGEXP '^[0-9]+$' THEN CAST(phoneNo AS SIGNED)
-        ELSE NULL
-      END
-    `);
-
-    await queryInterface.removeColumn('Students', 'phoneNo');
-
-    await queryInterface.renameColumn('Students', 'phone_number_int', 'phoneNo');
+    const t = await sequelize.transaction();
+    try {
+      await queryInterface.addColumn('Students', 'phone_number_int', {
+        type: Sequelize.BIGINT,
+        allowNull: true,
+      }, {transaction : t});
+  
+      await queryInterface.sequelize.query(`
+        UPDATE Students
+        SET phone_number_int = CASE
+          WHEN phoneNo REGEXP '^[0-9]+$' THEN CAST(phoneNo AS SIGNED)
+          ELSE NULL
+        END
+      `, {transaction : t});
+  
+      await queryInterface.removeColumn('Students', 'phoneNo', {transaction : t});
+  
+      await queryInterface.renameColumn('Students', 'phone_number_int', 'phoneNo', {transaction : t});
+    }
+    catch(error) {
+      console.log(error);
+      await t.rollback()
+    }
   },
 
   down: async (queryInterface, Sequelize) => {

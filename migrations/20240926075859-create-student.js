@@ -7,42 +7,42 @@ module.exports = {
         type : Sequelize.INTEGER,
         primaryKey : true,
         autoIncrement : true
-     },
-     firstName: {
+      },
+      firstName: {
        type : Sequelize.STRING,
        allowNull : false
-     },
-     lastName: {
+      },
+      lastName: {
        type : Sequelize.STRING,
-     },
-     email : {
-       type : Sequelize.STRING,
-       allowNull : false,
-       unique : true
-     },
-     phoneNo : {
+      },
+      email : {
        type : Sequelize.STRING,
        allowNull : false,
        unique : true
-     },
-     courseId : {
+      },
+      phoneNo : {
+       type : Sequelize.STRING,
+       allowNull : false,
+       unique : true
+      },
+      courseId : {
        type : Sequelize.INTEGER,
-     },
-     addressId : {
+      },
+      addressId : {
        type : Sequelize.INTEGER,
        unique : true
-     },
-    createdAt: {
+      },
+      createdAt: {
       allowNull: false,
       type: Sequelize.DATE
-    },
-    updatedAt: {
+      },
+      updatedAt: {
       allowNull: false,
       type: Sequelize.DATE
-    },
-    deletedAt: {
+      },
+      deletedAt: {
       type: Sequelize.DATE
-    },
+      },
     });
   },
   async down(queryInterface, Sequelize) {
